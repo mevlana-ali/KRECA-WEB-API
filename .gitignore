@@ -1,0 +1,21 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.vs/
+
+## Hassas Dosyalar — Kesinlikle commit yapılmamalı!
+appsettings.Development.json
+appsettings.Production.json
+
+## IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+## OS
+.DS_Store
+Thumbs.db
