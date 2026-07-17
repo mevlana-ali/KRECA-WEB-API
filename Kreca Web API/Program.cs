@@ -61,14 +61,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddAuthorization();
 
 // CORS — Production'da sadece frontend origin'ine izin ver
+// CORS — Production'da sadece frontend origin'ine izin ver
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
-            ?? new[] { "http://localhost:5173", "https://localhost:5173" };
-        
-        policy.WithOrigins(allowedOrigins)
+        policy.WithOrigins(
+                "http://localhost:5173",
+                "https://localhost:5173",
+                "https://kreca-frontend.vercel.app", // BURAYA KENDİ VERCEL ADRESİNİ YAZ
+                "https://kreca.com.tr",              // Gerçek domainin varsa ekle
+                "https://www.kreca.com.tr"
+              )
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
