@@ -67,12 +67,12 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy.WithOrigins(
-                "http://localhost:5173",
-                "https://localhost:5173",
-                "https://kreca-frontend.vercel.app", // BURAYA KENDİ VERCEL ADRESİNİ YAZ
-                "https://kreca.com.tr",              // Gerçek domainin varsa ekle
-                "https://www.kreca.com.tr"
-              )
+        "http://localhost:5173",
+        "https://localhost:5173",
+        "https://kreca-frontend.vercel.app",
+        "https://k-reca.com",              // BURAYI EKLEDİK
+        "https://www.k-reca.com"           // BURAYI EKLEDİK
+      )
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
@@ -112,7 +112,7 @@ app.UseCors("AllowFrontend");
 // Rate Limiting Middleware
 app.UseRateLimiter();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
